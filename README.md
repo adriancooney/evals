@@ -1,6 +1,5 @@
-# Evals Skill
-
-##### Stupidly simple and unreasonably powerful.
+# Evals Skill for Agents
+*Stupidly simple and unreasonably powerful.*
 
 An eval skill for agents. Create and run evals entirely within the coding agent—no external testing frameworks, no additional tooling, just you and your agent.
 
@@ -12,7 +11,7 @@ npx skills add adriancooney/evals
 
 ## Usage
 
-Walk the agent through any process—simple or arbitrarily complex. Set up a database schema, configure a build pipeline, implement an authentication flow, refactor a module. The process can span multiple files, multiple tools, require external API calls, or involve intricate multi-step workflows. It doesn't matter.
+Walk the agent through any arbitrarily complex process. Set up a database schema, configure a build pipeline, implement an authentication flow, refactor a module. The process can span multiple files, multiple tools, multiple DAYS, or involve intricate multi-step workflows. It doesn't matter.
 
 Once you're happy with the result, ask the agent to create an eval.
 
@@ -55,7 +54,7 @@ no-reply@acme.com arrives with subject "Welcome to Acme - Please verify your ema
 </expectation>
 ```
 
-To verify it works, run the eval. It spawns a subagent with a clean context—no memory of the original session—proving the process is reproducible.
+To verify it works, run the eval. It spawns a subagent with a clean context, no memory of the original session—proving the process is reproducible.
 
 ```
 > /evals run signup-flow.eval.md
@@ -188,8 +187,13 @@ This repo contains an eval that tests the process of creating an eval. Using [ag
 ```
 
 Run it yourself:
+
 ```bash
 /evals run evals/agent-tui-eval-creation.eval.md
 ```
 
 This spawns an agent that uses agent-tui to automate Claude Code, which creates files and generates its own eval—then verifies everything worked.
+
+*Created by [Agent Cooney](https://x.com/adriancooney) in a state of AP (Agent Psychosis)*
+
+![](https://i.imgflip.com/aina1m.jpg)
