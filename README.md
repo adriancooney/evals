@@ -1,10 +1,6 @@
 # Evals
 
-An eval skill for agents. Create and run evals entirely within the coding agent—no external testing frameworks, no additional tooling, just prompts and expectations.
-
-Just you, your agent, and a tiny skill.
-
-Teach your agent a complex 47-step process spanning 12 files and 3 APIs. Then run `/evals create`. Done. That's it. You just wrote an eval. The agent encodes what it learned into a replayable prompt, spawns a subagent to verify it works, and tells you if it passed. One command.
+An eval skill for agents. Create and run evals entirely within the coding agent—no external testing frameworks, no additional tooling, just you and your agent.
 
 ## Installation
 
@@ -14,11 +10,63 @@ npx skills add adriancooney/evals
 
 ## Usage
 
-Walk the agent through any process—simple or arbitrarily complex. Set up a database schema, configure a build pipeline, implement an authentication flow, refactor a module. The process can span multiple files, require external API calls, or involve intricate multi-step workflows. It doesn't matter.
+Walk the agent through any process—simple or arbitrarily complex. Set up a database schema, configure a build pipeline, implement an authentication flow, refactor a module. The process can span multiple files, multiple tools, require external API calls, or involve intricate multi-step workflows. It doesn't matter.
 
-Once you're happy with the result, run `/evals create <name>`. The agent distills what it just did into a prompt and expectation, writing it to `<name>.eval.md`.
+Once you're happy with the result, ask the agent to create an eval.
 
-To verify it works, start a fresh session (`/clear` or new terminal) and run `/evals run <name>.eval.md`. The eval runs in a clean context with no memory of the original session—proving the process is reproducible.
+```
+> lets test the login flow and check that I got an email
+
+● Opening http://localhost:3000/signup with agent-browser
+● Filling in test@example.com and password
+● Clicking "Create Account"
+● Account created successfully, welcome page displayed
+
+> ok now check my email in chrome
+
+● Opening Gmail via Claude Chrome extension
+● Searching for "Welcome to Acme"
+● Found email from no-reply@acme.com received 12 seconds ago
+● Subject: "Welcome to Acme - Please verify your email"
+
+> perfect, lets create an eval
+
+● Using evals skill
+● What should this eval be called? signup-flow
+● Writing eval to signup-flow.eval.md
+```
+
+The agent distills what it just did into a prompt and expectation:
+
+```markdown
+# Signup Flow
+
+<prompt>
+Open http://localhost:3000/signup with agent-browser. Fill in test@example.com
+and a password, then click "Create Account". Open Gmail via the Chrome extension
+and search for "Welcome to Acme".
+</prompt>
+
+<expectation>
+The signup completes and displays a welcome page. A verification email from
+no-reply@acme.com arrives with subject "Welcome to Acme - Please verify your email".
+</expectation>
+```
+
+To verify it works, run the eval. It spawns a subagent with a clean context—no memory of the original session—proving the process is reproducible.
+
+```
+> /evals run signup-flow.eval.md
+
+● Spawning subagent to run eval
+● Subagent: Opening http://localhost:3000/signup with agent-browser
+● Subagent: Filling in test@example.com and password
+● Subagent: Account created, welcome page displayed
+● Subagent: Opening Gmail, searching for "Welcome to Acme"
+● Subagent: Found verification email from no-reply@acme.com
+
+✓ SUCCESS — signup completed and verification email received
+```
 
 ## Why
 
@@ -31,6 +79,7 @@ It's stupidly simple and unreasonably powerful:
 - **One command to capture complexity** — turn a 47-step process into a replayable eval
 - **Just markdown** — evals are prompts and expectations, nothing else
 - **Agents all the way down** — subagents execute, observe, and judge
+- **Full agent capabilities** — evals can use skills, MCP servers, browser automation, whatever your agent can do
 - **Parallel by default** — run 50 evals at once, why not
 - **Fresh context every time** — each eval proves reproducibility from scratch
 
