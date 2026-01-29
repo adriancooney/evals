@@ -2,6 +2,10 @@
 
 An eval skill for agents. Create and run evals entirely within the coding agent—no external testing frameworks, no additional tooling, just prompts and expectations.
 
+Just you, your agent, and a tiny skill.
+
+Teach your agent a complex 47-step process spanning 12 files and 3 APIs. Then run `/evals create`. Done. That's it. You just wrote an eval. The agent encodes what it learned into a replayable prompt, spawns a subagent to verify it works, and tells you if it passed. One command.
+
 ## Installation
 
 ```bash
@@ -18,14 +22,17 @@ To verify it works, start a fresh session (`/clear` or new terminal) and run `/e
 
 ## Why
 
-Traditional eval frameworks require separate infrastructure, custom harnesses, and context switching between your agent and external tools. This skill keeps everything inside the coding engine:
+Traditional eval frameworks want you to spin up infrastructure, write custom harnesses, learn their DSL, configure runners, and context-switch between your agent and some external tool. It's exhausting. You just wanted to test if the thing works.
 
-- **Capture complexity fast** — turn any multi-step process into a replayable eval with one command
-- **No external dependencies** — evals are markdown files with prompts and expectations
-- **LLM-as-judge** — the agent evaluates its own output against success criteria
-- **Parallel execution** — multiple evals run as subagents concurrently
-- **Fresh context** — each eval runs in a subagent with no memory of prior work
-- **Zero setup** — just write a `.eval.md` file and run it
+This skill is ~80 lines of markdown. It runs entirely inside your coding agent. No external tools. No dependencies. No setup. The agent does the work. Subagents run your evals in parallel. LLM-as-judge determines pass/fail. Everything happens in the same place you write code.
+
+It's stupidly simple and unreasonably powerful:
+
+- **One command to capture complexity** — turn a 47-step process into a replayable eval
+- **Just markdown** — evals are prompts and expectations, nothing else
+- **Agents all the way down** — subagents execute, observe, and judge
+- **Parallel by default** — run 50 evals at once, why not
+- **Fresh context every time** — each eval proves reproducibility from scratch
 
 ## How It Works
 
