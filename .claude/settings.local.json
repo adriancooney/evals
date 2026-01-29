@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mktemp:*)",
+      "Bash(agent-tui run:*)",
+      "Bash(agent-tui wait:*)",
+      "Bash(agent-tui screenshot:*)",
+      "Bash(agent-tui press:*)",
+      "Bash(agent-tui input \"Create a temp file called data.txt with the content ''Hello World 12345'', then duplicate it to data_copy.txt, and confirm the data was copied correctly by comparing both files\")",
+      "Bash(agent-tui input:*)",
+      "Bash(agent-tui kill:*)"
+    ]
+  }
+}
