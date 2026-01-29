@@ -1,4 +1,6 @@
-# Evals
+# Evals Skill
+
+##### Stupidly simple and unreasonably powerful.
 
 An eval skill for agents. Create and run evals entirely within the coding agent—no external testing frameworks, no additional tooling, just you and your agent.
 
@@ -36,7 +38,7 @@ Once you're happy with the result, ask the agent to create an eval.
 ● Writing eval to signup-flow.eval.md
 ```
 
-The agent distills what it just did into a prompt and expectation:
+The agent distills what it just did into a prompt and expectation (`evals/signup-flow.eval.md`):
 
 ```markdown
 # Signup Flow
@@ -77,15 +79,16 @@ This skill is ~80 lines of markdown. It runs entirely inside your coding agent. 
 It's stupidly simple and unreasonably powerful:
 
 - **One command to capture complexity** — turn a 47-step process into a replayable eval
-- **Just markdown** — evals are prompts and expectations, nothing else
+- **Just markdown** — evals are `*.eval.md` files with prompts and expectations, nothing else
 - **Agents all the way down** — subagents execute, observe, and judge
+- **Your agent is the test runner** — it discovers evals, runs them, reports results
 - **Full agent capabilities** — evals can use skills, MCP servers, browser automation, whatever your agent can do
 - **Parallel by default** — run 50 evals at once, why not
 - **Fresh context every time** — each eval proves reproducibility from scratch
 
 ## How It Works
 
-An eval is a markdown file with two sections:
+An eval is a markdown file ending in `.eval.md` with two sections:
 
 ```markdown
 # My Eval
