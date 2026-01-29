@@ -38,6 +38,10 @@ Success criteria - describe what must be true for the eval to pass.
 
 When running multiple evals, spawn all subagents in parallel. Report aggregate results at the end.
 
+**Always end output with exactly one of these lines for CI parsing:**
+- `eval result: pass` — all evals passed
+- `eval result: fail` — one or more evals failed
+
 ### Subagent Instructions
 
 **IMPORTANT:** The subagent must only test and observe. It must NOT attempt to fix, modify, or change anything to make the expectation pass. The subagent executes the prompt, observes the outcome, and reports whether the expectation was met. If the expectation fails, report `FAIL` — do not try to make it pass.
@@ -65,3 +69,13 @@ Gather from the user:
 ```
 
 Write the eval to `<name>.eval.md` in the current directory.
+
+### Isolation
+
+When creating an eval, try to make it self-contained and reproducible. This isn't critical, but helps:
+
+- **Try to avoid hardcoded paths** — prefer relative paths or have the prompt create its own working directory rather than encoding specific temp directories or absolute paths.
+- **Try to avoid external state** — if the process relied on existing files or services, consider whether the eval should create that state itself.
+- **Parameterize where possible** — replace specific values (ports, filenames, IDs) with generic ones the eval can generate.
+
+If you see an opportunity to improve isolation but need clarification, ask the user.
