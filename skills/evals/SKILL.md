@@ -1,3 +1,8 @@
+---
+name: evals
+description: Run and create evals for testing agent behavior. Use when the user wants to create or run an eval.
+---
+
 # Eval Skill
 
 Run and create evals for testing agent behavior.
