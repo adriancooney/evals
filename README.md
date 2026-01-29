@@ -56,6 +56,13 @@ The skill spawns a subagent that:
 
 When running multiple evals, all subagents spawn in parallel and results are aggregated at the end.
 
+## Examples
+
+See the [evals/](https://github.com/adriancooney/evals/tree/main/evals) directory for real examples:
+
+- [`skill-install.eval.md`](https://github.com/adriancooney/evals/blob/main/evals/skill-install.eval.md) — tests that this skill installs correctly
+- [`agent-tui-eval-creation.eval.md`](https://github.com/adriancooney/evals/blob/main/evals/agent-tui-eval-creation.eval.md) — tests eval creation via agent-tui automation
+
 ## Commands
 
 | Command | Description |
