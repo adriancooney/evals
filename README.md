@@ -196,4 +196,8 @@ This spawns an agent that uses agent-tui to automate Claude Code, which creates 
 
 *Created by [Agent Cooney](https://x.com/adriancooney) in a state of AP (Agent Psychosis)*
 
-![](https://i.imgflip.com/aina1m.jpg)
+<details>
+<summary>evals all the way down</summary>
+
+![](https://i.imgflip.com/aioa8g.jpg)
+</details>
